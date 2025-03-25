@@ -1,19 +1,20 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/jwt_security
+    url: jdbc:postgresql://localhost:5432/security
     username: moafk
     password: panda
-    driver-class-name: org.postgresql.driver
+    driver-class-name: org.postgresql.Driver
 
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update  # Change to "update" if you don't want data loss
+    show-sql: false
+    properties:
       hibernate:
-        ddl-auto: create-drop
-      show-sql: false
-      properties:
-        hibernate:
-          format-sql: true
-      database: postgresql
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true  # Fix: Use underscore
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
 application:
   security:
     jwt:
